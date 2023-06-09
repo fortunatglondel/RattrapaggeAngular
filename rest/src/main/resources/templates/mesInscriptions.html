@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div class="container " layout:fragment="contentForView">
+
+
+
+        <div class="card col-md-10 offset-1 my-2 ">
+            <div class="card-body">
+               
+                <div class="d-flex">
+                <h5 class="my-3">List Inscrit</h5>
+
+                <a type th:href="@{/inscription}" class="btn btn-success my-3">
+                    Nouvelle inscription
+                </a>
+
+
+                </div>
+
+                <form  class="d-flex align-items-cente" method="get">
+
+
+                    
+                    <select class="form-control outline-primary ml-4" name="classeId" aria-label="Default select example">
+                        <option value="">Classe</option>
+                        <option th:each="cl : ${listesClasses}" th:value="${cl.id}" th:text="${cl.libelle}"></option>
+                    </select>
+                
+                    
+
+                    <input class="form-control basicFlatpickr date-input mr-4" placeholder="Exemple: 2020-06-20" type="date"  name="date" th:value="${date}" id="schedule-end-date" required />
+
+
+
+    
+
+                <button type href="#" class="btn btn-primary mr-4">
+                    Rechercher</button>
+                </form>
+
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Matricule</th>
+                        <th>NomComplet</th>
+                        <th>Classe</th>
+                        <th>action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="et: ${listeetudiants}">
+                        <td th:text="${et.tuteur}"></td>
+                        <td th:text="${et.nomComplet}"></td>
+                        <td th:text="${et.classe.libelle}"></td>
+                        <td d-flex ><button type href="#" class="btn btn-warning mr-4">
+                            Absences</button>
+                            <button type href="#" class="btn btn-primary mr-4">
+                                Annuler</button></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            
+            </div>
+        </div>
+
+
+</div>
+</div>
+</body>
+</html>

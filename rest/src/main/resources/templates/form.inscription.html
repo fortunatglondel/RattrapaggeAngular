@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container" layout:fragment="contentForView">
+<div class="card mt-2">
+    <div class="card-header">
+        <h5 class="my-3">Inscrire</h5>
+    </div>
+    <div class="card-body">
+        <form class="col-md-8 offset-2"
+              method="post" action="/inscription">
+           
+            <div class="mb-3">
+                <label for="nomComplet" class="form-label">NomComplet</label>
+                <input type="text"
+                       name="nomComplet"
+                      
+                       class="form-control" id="nomComplet" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="telephone" class="form-label">Tuteur</label>
+                <input type="text"
+                       
+                       class="form-control" id="telephone" name="tuteur" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="ville" class="form-label">email</label>
+               <input
+                       
+                       type="text" class="form-control" id="ville" name="email" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="quartier"
+
+                       class="form-label">password</label>
+                <input
+                    
+                
+                        type="text" class="form-control" name="password" id="quartier" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                
+                <select name="classeId" id="idProfesseur" class="form-control outline-primary mr-4" aria-label="Default select example">
+                    <option value="">Classe</option>
+                    <option th:each="cl : ${listeClasses}" th:value="${cl.id}" th:text="${cl.libelle}"></option>
+                </select>
+            
+            </div>
+            <div>
+                <button type="submit" class="float-end btn btn-primary">Enregister</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>
